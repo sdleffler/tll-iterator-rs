@@ -14,10 +14,3 @@ pub use iterator::NonEmpty;
 
 pub use chain::Chain;
 pub use map::Map;
-
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {}
-}
