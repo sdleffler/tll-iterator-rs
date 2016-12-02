@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/sdleffler/tll-iterator-rs.svg?branch=master)](https://travis-ci.org/sdleffler/tll-iterator-rs)
-[![Docs Status](https://docs.rs/tll-iterator/badge.svg)](https://docs.rs/tll-iterator)
-[![On crates.io](https://img.shields.io/crates/v/tll-iterator.svg)](https://crates.io/crates/tll-iterator)
+<!-- [![Docs Status](https://docs.rs/tll-iterator/badge.svg)](https://docs.rs/tll-iterator) -->
+<!-- [![On crates.io](https://img.shields.io/crates/v/tll-iterator.svg)](https://crates.io/crates/tll-iterator) -->
 
 # Statically-sized iterators for Rust
 
