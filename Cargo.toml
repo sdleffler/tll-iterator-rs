@@ -1,0 +1,8 @@
+[package]
+name = "tll-iterator"
+version = "0.1.0"
+authors = ["Sean Leffler <sean@errno.com>"]
+
+[dependencies]
+type-level-logic = { path = "../type-level-logic" }
+type-operators = "0.3.4"
