@@ -3,7 +3,7 @@ use iterator::{Iterator, NonEmpty};
 use std::iter;
 use std::marker::PhantomData;
 
-use tll::number::ternary::{Nat, Pred, NatPred};
+use tll::ternary::{Nat, Pred, NatPred};
 
 
 pub struct Map<L: Nat, I: Iterator<L>, B, F: FnMut(I::Item) -> B> {

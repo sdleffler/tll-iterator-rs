@@ -1,7 +1,7 @@
 use std::iter;
 use std::marker::PhantomData;
 
-use tll::number::ternary::{Nat, Pred, NatPred, Triple, NatTriple, Add, NatAdd, Term, Zero, One, Two};
+use tll::ternary::{Nat, Pred, NatPred, Triple, NatTriple, Add, NatAdd, Term, Zero, One, Two};
 
 use iterator::Iterator;
 use iterator::NonEmpty;

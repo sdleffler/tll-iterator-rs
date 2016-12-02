@@ -1,4 +1,4 @@
-use tll::number::ternary::{Nat, Pred, NatPred};
+use tll::ternary::{Nat, Pred, NatPred};
 
 
 pub trait Iterator<L: Nat> {
