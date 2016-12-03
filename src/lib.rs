@@ -6,6 +6,7 @@ pub mod chain;
 pub mod enumerate;
 pub mod iterator;
 pub mod map;
+pub mod zip;
 
 
 pub use iterator::Iterator as SizedIterator;

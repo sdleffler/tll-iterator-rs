@@ -6,6 +6,7 @@ use tll::ternary::{Nat, Pred, NatPred, Term};
 use chain::Chain;
 use enumerate::Enumerate;
 use map::Map;
+use zip::Zip;
 
 
 pub trait Iterator<L: Nat>: iter::IntoIterator {
@@ -13,6 +14,12 @@ pub trait Iterator<L: Nat>: iter::IntoIterator {
         where Self: Sized
     {
         Chain::new(self, other)
+    }
+
+    fn zip<U: Iterator<L>>(self, other: U) -> Zip<L, Self, U>
+        where Self: Sized
+    {
+        Zip::new(self, other)
     }
 
     fn map<B, F>(self, f: F) -> Map<L, Self, F>
