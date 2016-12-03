@@ -12,9 +12,27 @@ pub struct Chain<A: Nat, B: Nat, I: Iterator<A>, J: Iterator<B, Item = I::Item>>
     second: J,
 }
 
-impl<A: NatAdd<B>, B: Nat, I: Iterator<A>, J: Iterator<B, Item = I::Item>> Iterator<Add<A, B>> for Chain<A, B, I, J> {
+impl<A: Nat, B: Nat, I: Iterator<A>, J: Iterator<B, Item = I::Item>> iter::IntoIterator for Chain<A, B, I, J> {
+    type IntoIter = iter::Chain<I::IntoIter, J::IntoIter>;
     type Item = I::Item;
+
+    #[inline]
+    fn into_iter(self) -> Self::IntoIter {
+        self.first.into_iter().chain(self.second.into_iter())
+    }
 }
+
+impl<A: Nat, B: Nat, I: Iterator<A>, J: Iterator<B, Item = I::Item>> Chain<A, B, I, J> {
+    pub fn new(first: I, second: J) -> Self {
+        Chain {
+            phantom: PhantomData,
+            first: first,
+            second: second,
+        }
+    }
+}
+
+impl<A: NatAdd<B>, B: Nat, I: Iterator<A>, J: Iterator<B, Item = I::Item>> Iterator<Add<A, B>> for Chain<A, B, I, J> {}
 
 macro_rules! chain_impl_ret_first {
     () => {
@@ -115,17 +133,4 @@ impl<B: NatTriple + NatPred, I: Iterator<Term>, J: NonEmpty<Two<B>, Item = I::It
     type Next = Chain<Term, Pred<Two<B>>, I, J::Next>;
 
     chain_impl_ret_second!();
-}
-
-
-impl<A: Nat, B: Nat, I: Iterator<A> + iter::IntoIterator, J> iter::IntoIterator for Chain<A, B, I, J>
-    where J: Iterator<B, Item = <I as Iterator<A>>::Item> + iter::IntoIterator<Item = <I as iter::IntoIterator>::Item>
-{
-    type IntoIter = iter::Chain<I::IntoIter, J::IntoIter>;
-    type Item = <I as iter::IntoIterator>::Item;
-
-    #[inline]
-    fn into_iter(self) -> Self::IntoIter {
-        self.first.into_iter().chain(self.second.into_iter())
-    }
 }

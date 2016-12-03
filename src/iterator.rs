@@ -1,8 +1,25 @@
+use std::iter;
+
 use tll::ternary::{Nat, Pred, NatPred};
 
 
-pub trait Iterator<L: Nat> {
-    type Item;
+use chain::Chain;
+use map::Map;
+
+
+pub trait Iterator<L: Nat>: iter::IntoIterator {
+    fn chain<M: Nat, U: Iterator<M, Item = Self::Item>>(self, other: U) -> Chain<L, M, Self, U>
+        where Self: Sized
+    {
+        Chain::new(self, other)
+    }
+
+    fn map<B, F>(self, f: F) -> Map<L, Self, F>
+        where F: FnMut(Self::Item) -> B,
+              Self: Sized
+    {
+        Map::new(self, f)
+    }
 
     fn collect_sized<B>(self) -> B
         where B: FromIterator<L, Self::Item>,
