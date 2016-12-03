@@ -1,9 +1,10 @@
 use std::iter;
 
-use tll::ternary::{Nat, Pred, NatPred};
+use tll::ternary::{Nat, Pred, NatPred, Term};
 
 
 use chain::Chain;
+use enumerate::Enumerate;
 use map::Map;
 
 
@@ -19,6 +20,12 @@ pub trait Iterator<L: Nat>: iter::IntoIterator {
               Self: Sized
     {
         Map::new(self, f)
+    }
+
+    fn enumerate(self) -> Enumerate<L, Self, Term>
+        where Self: Sized
+    {
+        Enumerate::new(self)
     }
 
     fn collect_sized<B>(self) -> B

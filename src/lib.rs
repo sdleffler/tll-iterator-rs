@@ -3,6 +3,7 @@ extern crate type_operators;
 extern crate type_level_logic as tll;
 
 pub mod chain;
+pub mod enumerate;
 pub mod iterator;
 pub mod map;
 

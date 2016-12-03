@@ -3,8 +3,7 @@ use std::marker::PhantomData;
 
 use tll::ternary::{Nat, Pred, NatPred, Triple, NatTriple, Add, NatAdd, Term, Zero, One, Two};
 
-use iterator::Iterator;
-use iterator::NonEmpty;
+use iterator::{Iterator, NonEmpty};
 
 pub struct Chain<A: Nat, B: Nat, I: Iterator<A>, J: Iterator<B, Item = I::Item>> {
     phantom: PhantomData<(A, B)>,
