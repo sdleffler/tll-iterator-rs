@@ -44,6 +44,15 @@ pub trait IntoIterator<L: Nat> {
     fn into_sized_iter(self) -> Self::IntoIter;
 }
 
+impl<L: Nat, I: Iterator<L>> IntoIterator<L> for I {
+    type IntoIter = I;
+    type Item = I::Item;
+
+    fn into_sized_iter(self) -> Self {
+        self
+    }
+}
+
 pub trait FromIterator<L: Nat, A> {
     fn from_sized_iter<I: Iterator<L, Item = A>>(I) -> Self;
 }

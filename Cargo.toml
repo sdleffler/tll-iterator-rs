@@ -6,3 +6,9 @@ authors = ["Sean Leffler <sean@errno.com>"]
 [dependencies]
 type-level-logic = "0.1.0"
 type-operators = "0.3.4"
+
+[features]
+default = []
+specialization = ["type-operators/specialization", "type-level-logic/specialization"]
+
+nightly = ["specialization"]
